@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.additional-photo:active {
+    transform: scale(5); /* Zoom effect */
+    z-index: 10; /* Ensure the zoomed image is on top */
+    position: relative;
+}
+.additional-photo {
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    cursor: pointer; /* Indicates that the image is clickable */
+}
+
+.additional-photo.zoomed {
+    transform: scale(5); /* Zoom effect */
+    z-index: 10; /* Brings the zoomed image to the front */
+    position: relative;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Responsive images: http://www.menucool.com/ui/responsive-image-grid-with-hover-effect */
+
+#rig {
+    max-width:100%;
+    margin:0 auto; /*center aligned*/
+    padding:0;
+    font-size:0; /* Remember to change it back to normal font size if have captions */
+    list-style:none;
+    background-color:#FFFFFF;
+}
+#rig li {
+    display: inline-block;
+    *display:inline;/*for IE6 - IE7*/
+    width:25%;
+    vertical-align:middle;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+#rig li2 {
+    display: inline-block;
+    *display:inline;/*for IE6 - IE7*/
+    width:50%;
+    vertical-align:middle;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+/* The wrapper for each item */
+.rig-cell {
+    margin:6px;
+    /*box-shadow:0 0 6px rgba(1,1,1,0);*/
+    display:block;
+    position: relative;
+    overflow:hidden;
+}
+
+/* If have the image layer */
+.rig-img {
+    display:block;
+    width: 100%;
+    height: auto;
+    border:none;
+    transform:scale(1);
+    transition:all 1s;
+}
+
+#rig li:hover .rig-img {
+    transform:scale(1.05);
+}
+
+#rig li2:hover .rig-img {
+    transform:scale(1.05);
+}
+
+/* If have the overlay layer */
+.rig-overlay {
+    position: absolute;
+    display:block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background: #FFFFFF url(img/link.png) no-repeat center 20%;
+    background-size:50px 50px;
+    opacity:0;
+    filter:alpha(opacity=0);/*For IE6 - IE8*/
+    transition:all 0.6s;
+}
+#rig li:hover .rig-overlay {
+    opacity:0.8;
+}
+#rig li2:hover .rig-overlay {
+    opacity:0.8;
+}
+
+/* If have captions */
+.rig-text {
+    display:block;
+    padding:0 30px;
+    box-sizing:border-box;
+    position:absolute;
+    left:0;
+    width:100%;
+    text-align:center;
+    /*text-transform:capitalize;*/
+    font-size:18px;
+    font-weight:bold;
+    font-family: 'Oswald', sans-serif;
+    font-weight:normal!important;
+    top:40%;
+    color:black;
+    opacity:0;
+    filter:alpha(opacity=0);/*For older IE*/
+    transform:translateY(-20px);
+    transition:all .3s;
+}
+#rig li:hover .rig-text {
+    transform:translateY(0px);
+    opacity:0.9;
+}
+#rig li2:hover .rig-text {
+    transform:translateY(0px);
+    opacity:0.9;
+}
+
+@media (max-width: 9000px) {
+    #rig li {
+        width:25%;
+    }
+}
+
+@media (max-width: 700px) {
+    #rig li {
+        width:33.33%;
+    }
+}
+
+@media (max-width: 550px) {
+    #rig li {
+        width:50%;
+    }
+}
+
+@media (max-width: 9000px) {
+    #rig li2 {
+        width:50%;
+    }
+}
+
+
+/* .cropped {
+width: 610;
+height: 560;
+overflow: hidden;
+}
+
+.cropped img {
+margin: -70px 20px 20px 20px;
+} */
+
+</style>
+</head>
+<body>
+
+
+
+
+<div class="topnav">
+    <div class="topnav">
+<a class="active" href="index.html">Home</a>
+<a href="norway-turkey.html">Bergen to Istanbul</a>
+<a href="berlin-tarifa.html">Berlin to Tarifa</a>
+<a href="taiwan_2017.html">Taiwan</a>
+<a href="hue-hcmc_2016.html">Vietnam</a>
+<a href="yokohama-fukuoka_2019.html">Japan</a>
+<a href="bavarian-alp-traverse.html">Bavarian Alps Traverse</a>
+<a href="perla-hikes.html">Hikes with Perla</a>
+<a href="ibiza_2023.html">Ibiza sailing trip</a>
+<a href="singapore-kl_2017.html">Singapore to Kuala Lumpur</a>
+</div>
+
+</div>
+
+<div style="padding-left:16px">
+    <ul id="rig">
+                <li>
+                    <a class="rig-cell" href="norway-turkey.html">
+                        <img class="rig-img" src="figures/static/norway-turkey_map.png">
+                        <span class="rig-overlay"></span>
+                        <span class="rig-text" style="position: absolute; top: 30px; left: 0px;">
+                            <b>&#x42;&#x65;&#x72;&#x67;&#x65;&#x6E;&#x20;&#x74;&#x6F;&#x20;&#x49;&#x73;&#x74;&#x61;&#x6E;&#x62;&#x75;&#x6C;</b><br>
+                            28 days, 282 h, 10.1 h/day<br>
+                            6019 km, 215 km/day<br>
+                            52114 hm, 1861 hm/day<br>
+                            19 countries:&#x1F1E9;&#x1F1EA;&#x1F1E8;&#x1F1ED;&#x1F1F1;&#x1F1EE;&#x1F1EC;&#x1F1F7;&#x1F1F2;&#x1F1F0;&#x1F1FD;&#x1F1F0;&#x1F1F3;&#x1F1F1;&#x1F1F8;&#x1F1EA;&#x1F1F2;&#x1F1EA;&#x1F1F8;&#x1F1EE;&#x1F1ED;&#x1F1F7;&#x1F1EE;&#x1F1F9;&#x1F1F9;&#x1F1F7;&#x1F1F3;&#x1F1F4;&#x1F1E6;&#x1F1F1;&#x1F1E7;&#x1F1EA;&#x1F1E9;&#x1F1F0;&#x1F1EB;&#x1F1F7;&#x1F1E6;&#x1F1F9;
+                        </span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="rig-cell" href="berlin-tarifa.html">
+                        <img class="rig-img" src="figures/static/berlin-tarifa_map.png">
+                        <span class="rig-overlay"></span>
+                        <span class="rig-text" style="position: absolute; top: 30px; left: 0px;">
+                            <b>&#x42;&#x65;&#x72;&#x6C;&#x69;&#x6E;&#x20;&#x74;&#x6F;&#x20;&#x54;&#x61;&#x72;&#x69;&#x66;&#x61;</b><br>
+                            21 days, 187 h, 8.9 h/day<br>
+                            3782 km, 180 km/day<br>
+                            37376 hm, 1780 hm/day<br>
+                            7 countries:&#x1F1E8;&#x1F1FF;&#x1F1EB;&#x1F1F7;&#x1F1E6;&#x1F1F9;&#x1F1EA;&#x1F1F8;&#x1F1E9;&#x1F1EA;&#x1F1E8;&#x1F1ED;&#x1F1F1;&#x1F1EE;
+                        </span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="rig-cell" href="taiwan_2017.html">
+                        <img class="rig-img" src="figures/static/taiwan_2017_map.png">
+                        <span class="rig-overlay"></span>
+                        <span class="rig-text" style="position: absolute; top: 30px; left: 0px;">
+                            <b>&#x54;&#x61;&#x69;&#x77;&#x61;&#x6E;</b><br>
+                            10 days, 65 h, 6.5 h/day<br>
+                            1287 km, 129 km/day<br>
+                            15734 hm, 1573 hm/day<br>
+                            1 country:&#x1F1F9;&#x1F1FC;
+                        </span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="rig-cell" href="hue-hcmc_2016.html">
+                        <img class="rig-img" src="figures/static/hue-hcmc_2016_map.png">
+                        <span class="rig-overlay"></span>
+                        <span class="rig-text" style="position: absolute; top: 30px; left: 0px;">
+                            <b>&#x56;&#x69;&#x65;&#x74;&#x6E;&#x61;&#x6D;</b><br>
+                            8 days, 54 h, 6.8 h/day<br>
+                            1035 km, 129 km/day<br>
+                            6324 hm, 790 hm/day<br>
+                            1 country:&#x1F1FB;&#x1F1F3;
+                        </span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="rig-cell" href="yokohama-fukuoka_2019.html">
+                        <img class="rig-img" src="figures/static/yokohama-fukuoka_2019_map.png">
+                        <span class="rig-overlay"></span>
+                        <span class="rig-text" style="position: absolute; top: 30px; left: 0px;">
+                            <b>&#x4A;&#x61;&#x70;&#x61;&#x6E;</b><br>
+                            9 days, 60 h, 6.6 h/day<br>
+                            1145 km, 127 km/day<br>
+                            10610 hm, 1179 hm/day<br>
+                            1 country:&#x1F1EF;&#x1F1F5;
+                        </span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="rig-cell" href="bavarian-alp-traverse.html">
+                        <img class="rig-img" src="figures/static/bavarian-alp-traverse_map.png">
+                        <span class="rig-overlay"></span>
+                        <span class="rig-text" style="position: absolute; top: 30px; left: 0px;">
+                            <b>&#x42;&#x61;&#x76;&#x61;&#x72;&#x69;&#x61;&#x6E;&#x20;&#x41;&#x6C;&#x70;&#x73;&#x20;&#x54;&#x72;&#x61;&#x76;&#x65;&#x72;&#x73;&#x65;</b><br>
+                            13 days, 79 h, 6.1 h/day<br>
+                            402 km, 31 km/day<br>
+                            24118 hm, 1855 hm/day<br>
+                            2 countries:&#x1F1E9;&#x1F1EA;&#x1F1E6;&#x1F1F9;
+                        </span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="rig-cell" href="perla-hikes.html">
+                        <img class="rig-img" src="figures/static/perla-hikes_map.png">
+                        <span class="rig-overlay"></span>
+                        <span class="rig-text" style="position: absolute; top: 30px; left: 0px;">
+                            <b>&#x48;&#x69;&#x6B;&#x65;&#x73;&#x20;&#x77;&#x69;&#x74;&#x68;&#x20;&#x50;&#x65;&#x72;&#x6C;&#x61;</b><br>
+                            8 days, 40 h, 5.0 h/day<br>
+                            119 km, 15 km/day<br>
+                            7052 hm, 882 hm/day<br>
+                            1 country:&#x1F1E9;&#x1F1EA;
+                        </span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="rig-cell" href="ibiza_2023.html">
+                        <img class="rig-img" src="figures/static/ibiza_2023_map.png">
+                        <span class="rig-overlay"></span>
+                        <span class="rig-text" style="position: absolute; top: 30px; left: 0px;">
+                            <b>&#x49;&#x62;&#x69;&#x7A;&#x61;&#x20;&#x73;&#x61;&#x69;&#x6C;&#x69;&#x6E;&#x67;&#x20;&#x74;&#x72;&#x69;&#x70;</b><br>
+                            10 days, 65 h, 6.5 h/day<br>
+                            515 km, 51 km/day<br>
+                            1577 hm, 158 hm/day<br>
+                            1 country:
+                        </span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="rig-cell" href="singapore-kl_2017.html">
+                        <img class="rig-img" src="figures/static/singapore-kl_2017_map.png">
+                        <span class="rig-overlay"></span>
+                        <span class="rig-text" style="position: absolute; top: 30px; left: 0px;">
+                            <b>&#x53;&#x69;&#x6E;&#x67;&#x61;&#x70;&#x6F;&#x72;&#x65;&#x20;&#x74;&#x6F;&#x20;&#x4B;&#x75;&#x61;&#x6C;&#x61;&#x20;&#x4C;&#x75;&#x6D;&#x70;&#x75;&#x72;</b><br>
+                            4 days, 20 h, 5.0 h/day<br>
+                            421 km, 105 km/day<br>
+                            2433 hm, 608 hm/day<br>
+                            2 countries:&#x1F1F8;&#x1F1EC;&#x1F1F2;&#x1F1FE;
+                        </span>
+                    </a>
+                </li>
+            </ul>
+</div>
+
+</body>
+
+<script>
+// Ensure the script runs after the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all elements with the class 'additional-photo'
+    document.querySelectorAll('.additional-photo').forEach(function(img) {
+        // Add a click event listener to each image
+        img.addEventListener('click', function() {
+            // Toggle the 'zoomed' class on click to zoom in or out
+            img.classList.toggle('zoomed');
+        });
+    });
+});
+</script>
+
+</html>
