@@ -1,3 +1,7 @@
+# Github pages
+
+[Open the webpage here](https://max-models.github.io/runs-and-rides/)
+
 # Getting strava token
 
 * https://www.strava.com/settings/api
